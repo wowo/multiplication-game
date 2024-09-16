@@ -1,0 +1,20 @@
+<div class="multiplication-game">
+  <h2>Multiplication Game</h2>
+  
+  <div *ngIf="questionCount < 10">
+    <p>Question {{ questionCount + 1 }} of 10</p>
+    <p>{{ num1 }} x {{ num2 }} = ?</p>
+    
+    <input type="number" [(ngModel)]="answer" placeholder="Enter your answer">
+    <button (click)="checkAnswer()">Submit</button>
+    
+    <p [@fadeOut]="messageState">{{ message }}</p> <!-- Apply the animation here -->
+  </div>
+  
+  <div *ngIf="questionCount >= 10">
+    <p>{{ message }}</p>
+    <button (click)="generateQuestion(); questionCount = 0; correctAnswers = 0;">Play Again</button>
+  </div>
+  
+  <p>Score: {{ correctAnswers }} / {{ questionCount }}</p>
+</div>
